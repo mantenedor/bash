@@ -1,6 +1,8 @@
 # bmk
 
-Benchmark simples.
+Benchmark simples para linux.
+
+É preciso ter os pacotes "fio" "e sysbench" instalados.
 
 Execute:
 ```
