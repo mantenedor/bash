@@ -1,2 +1,8 @@
-# bash
-Só shell maroto
+# bmk
+
+Benchmark simples.
+
+Execute:
+```
+./bmk.sh --help
+```
