@@ -1,13 +1,10 @@
-#/bin/bash
+#!/bin/bash
 
 #
 # Script de benchmark
 # Autor: Wagton Azevedo
 # Criado: 11/2022
 #
-
-
-
 
 function NETWORK {
         echo 'Testando rede...' | tee -a out.txt
@@ -38,7 +35,7 @@ function FS {
         for i in `echo $LOCAL`; do
                 echo "":
                 echo "Testando $i..." | tee -a out.txt
-                dd if=/dev/zero of=$i/test1.img bs=1G count=1 oflag=dsync >> out.txt
+                dd if=/dev/zero of=$i/test1.img bs=1G count=1 oflag=dsync &>> out.txt
                 #hdparm -t  $i
                 ##fio --filename=$i --readonly --rw=read --name=TEST --runtime=3 | grep READ
                 sleep 1
@@ -56,9 +53,6 @@ function CPU {
         echo 'Testando CPU...' | tee -a out.txt
         sysbench cpu --threads=1 run >> out.txt
 }
-
-
-
 
 function HELP {
         clear
@@ -98,8 +92,10 @@ function SUMARY {
         echo "Teste de armazenamento:"
         cat last.out | grep "Timing buffered disk reads" -B1
         echo ""
+        cat last.out | grep "bytes (" -B1
+        echo ""
         echo "Teste de rede:"
-        cat last.out | grep "ping statistics" -A1
+        cat last.out | grep "ping statistics" -A2
         echo ""
         echo 'Veja o relatóio completo em "out.txt".'
         exit
