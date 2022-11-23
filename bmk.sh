@@ -32,7 +32,7 @@ function HD {
 
 function FS {
         echo 'Testando sistemas de arquivos externos...'
-        LOCAL=`df -T | grep -e cifs -e nfs | cut -d' ' -f15`
+        LOCAL=`df -T | grep -e cifs -e nfs | rev | cut -d' ' -f1| rev`
 
         for i in `echo $LOCAL`; do
                 echo "":
@@ -61,6 +61,8 @@ function CPU {
 
 function HELP {
         clear
+        echo "Instale o sysbench."
+        echo ""
         echo "Utilize: ./bmk.sh [OPTIONS]."
         echo ""
         echo "--hd) Testa disco rígido"
@@ -90,8 +92,8 @@ function ALL {
 }
 
 LISTA=$2
-SIZE=$3
-COUNT=$4
+COUNT=$3
+SIZE=$4
 
 case $1 in
         --hd) HD;;
