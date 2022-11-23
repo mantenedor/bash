@@ -2,7 +2,7 @@
 
 Benchmark simples para linux.
 
-É preciso ter os pacotes "fio" "e sysbench" instalados.
+É preciso ter os pacotes "fio" e "sysbench" instalados.
 
 Execute:
 ```
